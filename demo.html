@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CogniTwin - Demo Screenshot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            text-align: center;
+            border-radius: 16px 16px 0 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 0.95em;
+            color: #666;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+        }
+        
+        .input-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 1em;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: inherit;
+            min-height: 150px;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        .input-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .privacy-note {
+            color: #4CAF50;
+            font-weight: 500;
+        }
+        
+        .action-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            font-size: 1em;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard-header h2 {
+            font-size: 1.5em;
+            color: #333;
+        }
+        
+        .analyzing-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .metric-card h3 {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .gauge {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+        }
+        
+        .gauge-circle {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gauge-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .metric-description {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer p {
+            margin: 10px 0;
+        }
+        
+        .footer .privacy-note {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧠 CogniTwin</h1>
+        <p class="tagline">Real-time Cognitive Digital Twin</p>
+        <p class="subtitle">Model your mental state from typing behavior - Privacy-first & Explainable</p>
+    </div>
+    
+    <div class="container">
+        <div class="input-section">
+            <label>Type here to analyze your cognitive state:</label>
+            <textarea readonly>This is a sample demonstration of CogniTwin. The system analyzes your typing patterns including keystroke timing, error rates, pauses, and sentiment to compute four cognitive metrics: cognitive load, mood drift, decision stability, and risk volatility. All analysis uses deterministic formulas without any machine learning, making it fully explainable and transparent.</textarea>
+            <div class="input-info">
+                <span class="char-count">312 characters</span>
+                <span class="privacy-note">🔒 Privacy-first: Only derived features are analyzed</span>
+            </div>
+        </div>
+        
+        <div class="action-bar">
+            <button class="btn btn-primary">Analyze Now</button>
+            <button class="btn btn-secondary">Clear</button>
+        </div>
+        
+        <div class="dashboard">
+            <div class="dashboard-header">
+                <h2>Cognitive Metrics</h2>
+                <span class="analyzing-badge">Real-time</span>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Cognitive Load</h3>
+                    <div class="gauge">
+                        <svg class="gauge-circle" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#FF6B6B" stroke-width="8" 
+                                    stroke-dasharray="184 283" stroke-linecap="round" 
+                                    transform="rotate(-90 50 50)"/>
+                        </svg>
+                        <div class="gauge-value">65%</div>
+                    </div>
+                    <p class="metric-description">Mental effort and task complexity</p>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>Mood Drift</h3>
+                    <div class="gauge">
+                        <svg class="gauge-circle" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#4ECDC4" stroke-width="8" 
+                                    stroke-dasharray="119 283" stroke-linecap="round" 
+                                    transform="rotate(-90 50 50)"/>
+                        </svg>
+                        <div class="gauge-value">42%</div>
+                    </div>
+                    <p class="metric-description">Emotional state tracking</p>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>Decision Stability</h3>
+                    <div class="gauge">
+                        <svg class="gauge-circle" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#45B7D1" stroke-width="8" 
+                                    stroke-dasharray="221 283" stroke-linecap="round" 
+                                    transform="rotate(-90 50 50)"/>
+                        </svg>
+                        <div class="gauge-value">78%</div>
+                    </div>
+                    <p class="metric-description">Consistency in behavior</p>
+                </div>
+                
+                <div class="metric-card">
+                    <h3>Risk Volatility</h3>
+                    <div class="gauge">
+                        <svg class="gauge-circle" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="8"/>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#FFA07A" stroke-width="8" 
+                                    stroke-dasharray="93 283" stroke-linecap="round" 
+                                    transform="rotate(-90 50 50)"/>
+                        </svg>
+                        <div class="gauge-value">33%</div>
+                    </div>
+                    <p class="metric-description">Impulsivity and uncertainty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>CogniTwin captures keystroke timing, error rate, text sentiment, and pause intervals to compute cognitive load, mood drift, decision stability, and risk volatility.</p>
+        <p class="privacy-note">🔒 Privacy-first: No raw keystrokes or text are ever stored. Only derived metrics are saved.</p>
+    </div>
+</body>
+</html>
