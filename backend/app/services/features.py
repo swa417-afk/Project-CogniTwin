@@ -4,6 +4,11 @@ Privacy-first: processes derived features only
 """
 from app.schemas.cognitive import KeystrokeData
 
+# Constants for rage detection thresholds
+HIGH_ERROR_THRESHOLD = 0.2
+CORRECTION_PENALTY_MULTIPLIER = 0.5
+OPTIMAL_DWELL_TIME = 100  # milliseconds
+
 class FeatureDetector:
     """Detects advanced behavioral patterns from typing metrics"""
     
@@ -67,14 +72,13 @@ class FeatureDetector:
             sentiment_rage = 0  # Positive sentiment = no rage
         
         # High corrections without fixing = frustrated abandonment
-        if data.error_rate > 0.2 and data.correction_rate < data.error_rate * 0.5:
+        if data.error_rate > HIGH_ERROR_THRESHOLD and data.correction_rate < data.error_rate * CORRECTION_PENALTY_MULTIPLIER:
             frustration_factor = 0.8
         else:
-            frustration_factor = data.error_rate * 0.5
+            frustration_factor = data.error_rate * CORRECTION_PENALTY_MULTIPLIER
         
         # Erratic dwell time (very short or very long) = agitation
-        optimal_dwell = 100
-        dwell_variance = abs(data.avg_dwell_time - optimal_dwell) / optimal_dwell
+        dwell_variance = abs(data.avg_dwell_time - OPTIMAL_DWELL_TIME) / OPTIMAL_DWELL_TIME
         erratic_score = min(1.0, dwell_variance)
         
         # High heat amplifies rage (arousal + anger)

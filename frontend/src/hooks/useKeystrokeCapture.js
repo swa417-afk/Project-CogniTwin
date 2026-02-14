@@ -127,8 +127,10 @@ export const useKeystrokeCapture = () => {
       ? Math.min(backspaceCount / totalKeystrokes, 1)
       : 0;
     
-    const correctionRate = totalKeystrokes > 0
-      ? Math.min(backspaceCount / totalKeystrokes, 1)
+    // Correction rate: ratio of corrections to text produced
+    // (accounts for correcting vs just deleting)
+    const correctionRate = textLength > 0
+      ? Math.min(backspaceCount / (textLength + backspaceCount), 1)
       : 0;
     
     return {

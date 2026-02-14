@@ -7,11 +7,15 @@ A real-time cognitive digital twin that models user mental state from typing beh
 ## 🎯 Features
 
 - **Real-time Analysis**: Continuous monitoring of typing behavior and cognitive state
-- **Four Cognitive Metrics** (0-1 scores):
+- **Six Cognitive Metrics** (0-1 scores):
   - **Cognitive Load**: Mental effort and task complexity
   - **Mood Drift**: Emotional state tracking from sentiment and rhythm
   - **Decision Stability**: Consistency in typing behavior
   - **Risk Volatility**: Impulsivity and uncertainty indicators
+  - **Heat**: Agitation and arousal level from typing intensity
+  - **Rage**: Anger intensity from aggressive typing patterns
+- **Crisis Support**: PIN-protected emergency hotlines and contacts
+- **Behavior Diary**: Mood logging with cognitive snapshots
 - **Privacy-First Design**: Stores only derived features, never raw keystrokes or text
 - **Deterministic Formulas**: No ML models, fully explainable calculations
 - **Modern Stack**: FastAPI + PostgreSQL backend, React + Vite frontend

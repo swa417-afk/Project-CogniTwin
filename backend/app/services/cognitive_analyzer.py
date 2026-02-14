@@ -4,7 +4,7 @@ Privacy-first: processes derived features only, never raw keystrokes
 """
 import math
 from app.schemas.cognitive import KeystrokeData, CognitiveScores
-from app.services.features import FeatureDetector
+from app.services.features import FeatureDetector, OPTIMAL_DWELL_TIME
 
 class CognitiveAnalyzer:
     """Analyzes typing behavior to compute cognitive state metrics"""
@@ -87,8 +87,7 @@ class CognitiveAnalyzer:
         pause_factor = self.normalize(data.pause_count, 0, 10)
         
         # Very low or very high dwell time = instability
-        dwell_mid = 100  # Target stable dwell time
-        dwell_deviation = abs(data.avg_dwell_time - dwell_mid) / dwell_mid
+        dwell_deviation = abs(data.avg_dwell_time - OPTIMAL_DWELL_TIME) / OPTIMAL_DWELL_TIME
         dwell_instability = min(1.0, dwell_deviation)
         
         # Calculate stability (inverse of instability)

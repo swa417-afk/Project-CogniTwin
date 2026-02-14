@@ -6,15 +6,9 @@ set -e
 echo "🧠 Starting CogniTwin Application..."
 echo "======================================"
 
-# Check if Docker is available
-if ! command -v docker &> /dev/null; then
-    echo "❌ Docker is not installed. Please install Docker first."
-    exit 1
-fi
-
-# Check if Docker Compose is available
+# Check if Docker and Docker Compose are available
 if ! command -v docker &> /dev/null || ! docker compose version &> /dev/null; then
-    echo "❌ Docker Compose is not available. Please install Docker Compose first."
+    echo "❌ Docker or Docker Compose is not available. Please install Docker first."
     exit 1
 fi
 
