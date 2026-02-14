@@ -21,6 +21,8 @@ class CognitiveScores(BaseModel):
     mood_drift: float = Field(..., ge=0, le=1)
     decision_stability: float = Field(..., ge=0, le=1)
     risk_volatility: float = Field(..., ge=0, le=1)
+    heat: float = Field(..., ge=0, le=1)
+    rage: float = Field(..., ge=0, le=1)
 
 class CognitiveMetricResponse(BaseModel):
     id: int
@@ -39,6 +41,8 @@ class CognitiveMetricResponse(BaseModel):
     mood_drift: float
     decision_stability: float
     risk_volatility: float
+    heat: float
+    rage: float
     
     class Config:
         from_attributes = True
@@ -48,3 +52,28 @@ class AnalysisResponse(BaseModel):
     session_id: str
     scores: CognitiveScores
     timestamp: datetime
+
+class DiaryEntryCreate(BaseModel):
+    """Create a new diary entry"""
+    session_id: str
+    mood_rating: int = Field(..., ge=1, le=5, description="Mood rating 1-5")
+    mood_notes: str = Field("", description="Optional notes about mood")
+    is_crisis: bool = Field(False, description="Mark as crisis entry")
+
+class DiaryEntryResponse(BaseModel):
+    """Diary entry with cognitive snapshot"""
+    id: int
+    session_id: str
+    timestamp: datetime
+    mood_rating: int
+    mood_notes: str
+    cognitive_load: float
+    mood_drift: float
+    decision_stability: float
+    risk_volatility: float
+    heat: float
+    rage: float
+    is_crisis: bool
+    
+    class Config:
+        from_attributes = True

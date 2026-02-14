@@ -45,6 +45,18 @@ const Dashboard = ({ scores, isAnalyzing }) => {
           description="Impulsivity and uncertainty"
           color="#FFA07A"
         />
+        <MetricCard
+          title="Heat"
+          value={scores.heat}
+          description="Agitation and arousal level"
+          color="#FF9800"
+        />
+        <MetricCard
+          title="Rage"
+          value={scores.rage}
+          description="Anger intensity indicator"
+          color="#F44336"
+        />
       </div>
     </div>
   );

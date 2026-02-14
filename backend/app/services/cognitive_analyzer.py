@@ -4,9 +4,13 @@ Privacy-first: processes derived features only, never raw keystrokes
 """
 import math
 from app.schemas.cognitive import KeystrokeData, CognitiveScores
+from app.services.features import FeatureDetector
 
 class CognitiveAnalyzer:
     """Analyzes typing behavior to compute cognitive state metrics"""
+    
+    def __init__(self):
+        self.feature_detector = FeatureDetector()
     
     @staticmethod
     def normalize(value: float, min_val: float, max_val: float) -> float:
@@ -132,9 +136,14 @@ class CognitiveAnalyzer:
         Main analysis function: computes all cognitive metrics
         Returns scores between 0 and 1
         """
+        # Get advanced features (heat and rage)
+        features = self.feature_detector.analyze_features(data)
+        
         return CognitiveScores(
             cognitive_load=self.calculate_cognitive_load(data),
             mood_drift=self.calculate_mood_drift(data),
             decision_stability=self.calculate_decision_stability(data),
-            risk_volatility=self.calculate_risk_volatility(data)
+            risk_volatility=self.calculate_risk_volatility(data),
+            heat=features['heat'],
+            rage=features['rage']
         )

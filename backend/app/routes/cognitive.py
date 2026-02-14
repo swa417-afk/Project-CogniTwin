@@ -45,7 +45,9 @@ def analyze_typing(data: KeystrokeData, db: Session = Depends(get_db)):
         cognitive_load=scores.cognitive_load,
         mood_drift=scores.mood_drift,
         decision_stability=scores.decision_stability,
-        risk_volatility=scores.risk_volatility
+        risk_volatility=scores.risk_volatility,
+        heat=scores.heat,
+        rage=scores.rage
     )
     
     db.add(metric)

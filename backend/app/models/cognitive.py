@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Float, String, DateTime, Text
+from sqlalchemy import Column, Integer, Float, String, DateTime, Text, Boolean
 from sqlalchemy.sql import func
 from app.database import Base
 
@@ -39,3 +39,30 @@ class CognitiveMetric(Base):
     mood_drift = Column(Float)
     decision_stability = Column(Float)
     risk_volatility = Column(Float)
+    
+    # Enhanced mental health metrics
+    heat = Column(Float)  # Agitation/arousal level
+    rage = Column(Float)  # Anger intensity
+
+class DiaryEntry(Base):
+    """Behavior diary entries for mood logging"""
+    __tablename__ = "diary_entries"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    session_id = Column(String(100), index=True)
+    timestamp = Column(DateTime(timezone=True), server_default=func.now())
+    
+    # User-provided mood data
+    mood_rating = Column(Integer)  # 1-5 scale
+    mood_notes = Column(Text)  # User's notes (stored for user benefit)
+    
+    # Snapshot of cognitive metrics at time of entry
+    cognitive_load = Column(Float)
+    mood_drift = Column(Float)
+    decision_stability = Column(Float)
+    risk_volatility = Column(Float)
+    heat = Column(Float)
+    rage = Column(Float)
+    
+    # Context flags
+    is_crisis = Column(Boolean, default=False)  # Marked as crisis entry
