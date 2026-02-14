@@ -120,6 +120,9 @@
 CodeQL Analysis: ✅ PASSED
 - Python: 0 alerts
 - JavaScript: 0 alerts
+
+Dependency Check: ✅ PASSED
+- FastAPI updated to 0.109.1 (patched ReDoS vulnerability)
 ```
 
 ### Code Review Results
