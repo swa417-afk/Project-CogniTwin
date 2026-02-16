@@ -250,3 +250,17 @@ For issues, questions, or suggestions, please open an issue on GitHub.
 ---
 
 **Built with ❤️ for privacy-conscious cognitive analysis**
+
+
+## Migrations (Alembic)
+From `backend/`:
+```bash
+alembic revision --autogenerate -m "init"
+alembic upgrade head
+```
+
+## Seed demo data
+From `backend/`:
+```bash
+python -m app.seed
+```

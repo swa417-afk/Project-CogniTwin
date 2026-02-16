@@ -2,7 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import engine, Base
-from app.routes import cognitive, diary
+from app.routes import cognitive, diary, health
+from app.logging_config import setup_logging
+
+# Configure logging
+setup_logging()
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -26,6 +30,7 @@ app.add_middleware(
 # Include routers
 app.include_router(cognitive.router)
 app.include_router(diary.router)
+app.include_router(health.router)
 
 @app.get("/")
 def root():
