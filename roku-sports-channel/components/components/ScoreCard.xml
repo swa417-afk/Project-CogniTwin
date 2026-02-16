@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ScoreCard: Compact score ticker card -->
+<component name="ScoreCard" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="ScoreCard.brs" />
+
+    <children>
+        <Rectangle id="scoreBg" width="240" height="100" color="#1C1C3A" cornerRadius="6" />
+
+        <!-- League badge -->
+        <Rectangle id="leagueBadge" width="240" height="3" color="#E10600"
+                   translation="[0, 0]" />
+
+        <!-- Away team line -->
+        <Group translation="[10, 12]">
+            <Label id="awayAbbr" font="font:SmallBoldSystemFont" color="#FFFFFF"
+                   width="150" />
+            <Label id="awayScoreLabel" font="font:SmallBoldSystemFont" color="#FFFFFF"
+                   translation="[180, 0]" horizAlign="right" width="40" />
+        </Group>
+
+        <!-- Home team line -->
+        <Group translation="[10, 40]">
+            <Label id="homeAbbr" font="font:SmallBoldSystemFont" color="#FFFFFF"
+                   width="150" />
+            <Label id="homeScoreLabel" font="font:SmallBoldSystemFont" color="#FFFFFF"
+                   translation="[180, 0]" horizAlign="right" width="40" />
+        </Group>
+
+        <!-- Game status -->
+        <Group translation="[10, 72]">
+            <Label id="statusLabel" font="font:SmallestBoldSystemFont"
+                   color="#E10600" />
+        </Group>
+    </children>
+</component>

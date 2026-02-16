@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ToastNotification: Popup notification banner -->
+<component name="ToastNotification" extends="Group">
+    <interface>
+        <field id="message" type="string" onChange="onMessageChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="ToastNotification.brs" />
+
+    <children>
+        <Rectangle id="toastBg" width="600" height="60" color="#1C1C3A"
+                   cornerRadius="8" opacity="0.95" />
+        <Rectangle width="4" height="60" color="#E10600" />
+        <Label id="toastText" translation="[20, 16]"
+               font="font:SmallBoldSystemFont" color="#FFFFFF" width="560" />
+    </children>
+</component>

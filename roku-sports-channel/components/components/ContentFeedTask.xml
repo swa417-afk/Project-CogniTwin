@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ContentFeedTask: Async task for fetching content feeds and API data -->
+<component name="ContentFeedTask" extends="Task">
+    <interface>
+        <field id="endpoint" type="string" />
+        <field id="params" type="assocarray" />
+        <field id="response" type="assocarray" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/networkManager.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="ContentFeedTask.brs" />
+</component>

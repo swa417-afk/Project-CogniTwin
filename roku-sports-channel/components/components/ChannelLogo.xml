@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ChannelLogo: Channel sidebar item in EPG -->
+<component name="ChannelLogo" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="ChannelLogo.brs" />
+
+    <children>
+        <Rectangle id="logoBg" width="300" height="70" color="#0A0A1E" />
+        <Poster id="channelIcon" width="50" height="50" translation="[10, 10]" />
+        <Group translation="[70, 10]">
+            <Label id="channelNumber" font="font:SmallestBoldSystemFont"
+                   color="#888899" />
+            <Label id="channelName" translation="[0, 20]"
+                   font="font:SmallBoldSystemFont" color="#FFFFFF"
+                   width="220" maxLines="1" />
+        </Group>
+    </children>
+</component>

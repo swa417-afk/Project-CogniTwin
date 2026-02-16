@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- MainScene: Root scene graph component - orchestrates all screens -->
+<component name="MainScene" extends="Scene" initialFocus="navBar">
+    <interface>
+        <field id="deepLink" type="assocarray" onChange="onDeepLink" />
+        <field id="currentScreen" type="string" value="home" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="MainScene.brs" />
+
+    <children>
+        <!-- Background -->
+        <Rectangle id="background" width="1920" height="1080" color="#0D0D1A" />
+
+        <!-- Top Navigation Bar -->
+        <NavBar id="navBar" translation="[0, 0]" />
+
+        <!-- Screen Container -->
+        <Group id="screenContainer" translation="[0, 80]">
+            <HomeScreen id="homeScreen" visible="true" />
+            <LiveGuide id="liveGuide" visible="false" />
+            <GameCenter id="gameCenter" visible="false" />
+            <SearchScreen id="searchScreen" visible="false" />
+            <FavoritesScreen id="favoritesScreen" visible="false" />
+            <SettingsScreen id="settingsScreen" visible="false" />
+        </Group>
+
+        <!-- Video Player Overlay (floats above everything) -->
+        <VideoPlayerScreen id="videoPlayer" visible="false" translation="[0, 0]" />
+
+        <!-- Loading Spinner -->
+        <Group id="loadingOverlay" visible="false">
+            <Rectangle width="1920" height="1080" color="#000000" opacity="0.85" />
+            <LayoutGroup translation="[860, 490]" horizAlignment="center" vertAlignment="center" itemSpacings="[20]">
+                <BusySpinner id="spinner" />
+                <Label id="loadingText" text="Loading..." font="font:MediumSystemFont" color="#FFFFFF" />
+            </LayoutGroup>
+        </Group>
+
+        <!-- Toast Notification -->
+        <ToastNotification id="toast" translation="[660, 50]" visible="false" />
+    </children>
+</component>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- BusySpinner: Loading spinner -->
+<component name="BusySpinner" extends="Group">
+    <script type="text/brightscript" uri="BusySpinner.brs" />
+
+    <children>
+        <Poster id="spinnerImage" width="60" height="60"
+                uri="" />
+        <Label id="spinnerDots" text="..." font="font:LargeBoldSystemFont"
+               color="#E10600" translation="[10, 0]" />
+    </children>
+</component>

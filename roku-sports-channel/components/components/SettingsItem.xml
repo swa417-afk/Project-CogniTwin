@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SettingsItem: Individual settings row -->
+<component name="SettingsItem" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="SettingsItem.brs" />
+
+    <children>
+        <Rectangle id="itemBg" width="800" height="70" color="#1C1C3A" cornerRadius="4" />
+        <Label id="settingLabel" translation="[20, 22]"
+               font="font:SmallBoldSystemFont" color="#FFFFFF" width="400" />
+        <Label id="settingValue" translation="[500, 22]"
+               font="font:SmallSystemFont" color="#E10600"
+               width="280" horizAlign="right" />
+        <Rectangle width="800" height="1" translation="[0, 69]" color="#2A2A4A" />
+    </children>
+</component>

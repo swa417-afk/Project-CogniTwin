@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SettingsScreen: Channel preferences and configuration -->
+<component name="SettingsScreen" extends="Group">
+    <interface>
+        <field id="contentLoaded" type="boolean" value="false" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="SettingsScreen.brs" />
+
+    <children>
+        <Rectangle width="1920" height="1000" color="#0D0D1A" />
+
+        <Group translation="[60, 20]">
+            <Label text="Settings" font="font:LargeBoldSystemFont" color="#FFFFFF" />
+        </Group>
+
+        <MarkupGrid id="settingsGrid" translation="[60, 80]"
+                    itemComponentName="SettingsItem"
+                    numColumns="1"
+                    numRows="10"
+                    itemSize="[800, 70]"
+                    itemSpacing="[0, 4]"
+                    drawFocusFeedback="true"
+                    focusBitmapBlendColor="#E1060033" />
+
+        <!-- About section -->
+        <Group translation="[60, 850]">
+            <Label text="Game Time v1.0.0"
+                   font="font:SmallestSystemFont" color="#444466" />
+            <Label text="Content sourced from free, publicly available streams"
+                   translation="[0, 20]"
+                   font="font:SmallestSystemFont" color="#444466" width="800" />
+        </Group>
+    </children>
+</component>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SportBadge: Clickable sport category badge for search -->
+<component name="SportBadge" extends="Group">
+    <interface>
+        <field id="sportName" type="string" onChange="onNameChanged" />
+        <field id="sportColor" type="string" value="#1D428A" onChange="onColorChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="SportBadge.brs" />
+
+    <children>
+        <Rectangle id="badgeBg" width="120" height="80" cornerRadius="8" />
+        <Label id="badgeLabel" translation="[10, 50]"
+               font="font:SmallBoldSystemFont" color="#FFFFFF" width="100"
+               horizAlign="center" />
+    </children>
+</component>

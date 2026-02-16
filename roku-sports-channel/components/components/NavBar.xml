@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- NavBar: FuboTV-style top navigation bar -->
+<component name="NavBar" extends="Group">
+    <interface>
+        <field id="selectedTab" type="string" value="home" alwaysNotify="true" />
+        <field id="focusedTab" type="integer" value="0" />
+    </interface>
+
+    <script type="text/brightscript" uri="NavBar.brs" />
+
+    <children>
+        <!-- Nav background -->
+        <Rectangle id="navBg" width="1920" height="76" color="#0D0D1A" opacity="0.95" />
+
+        <!-- Gradient fade at bottom -->
+        <Rectangle width="1920" height="4" translation="[0, 76]" color="#E10600" opacity="0.8" />
+
+        <!-- Logo -->
+        <Group translation="[40, 12]">
+            <Label id="logoText" text="GAME TIME" font="font:LargeBoldSystemFont"
+                   color="#E10600" />
+        </Group>
+
+        <!-- Tab buttons -->
+        <LayoutGroup id="tabGroup" translation="[320, 0]"
+                     layoutDirection="horiz" horizAlignment="left"
+                     itemSpacings="[0]">
+            <NavTab id="tab_home" tabName="home" tabLabel="Home" />
+            <NavTab id="tab_guide" tabName="guide" tabLabel="Live TV" />
+            <NavTab id="tab_scores" tabName="scores" tabLabel="Scores" />
+            <NavTab id="tab_search" tabName="search" tabLabel="Search" />
+            <NavTab id="tab_favorites" tabName="favorites" tabLabel="My Teams" />
+        </LayoutGroup>
+
+        <!-- Live indicator -->
+        <Group id="liveIndicator" translation="[1750, 22]">
+            <Rectangle width="12" height="12" color="#E10600"
+                       cornerRadius="6" translation="[0, 10]" />
+            <Label text="LIVE" font="font:SmallBoldSystemFont"
+                   color="#E10600" translation="[20, 5]" />
+        </Group>
+    </children>
+</component>

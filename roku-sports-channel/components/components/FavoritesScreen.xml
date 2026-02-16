@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- FavoritesScreen: My Teams - NBA League Pass style team following -->
+<component name="FavoritesScreen" extends="Group">
+    <interface>
+        <field id="selectedContent" type="assocarray" alwaysNotify="true" />
+        <field id="contentLoaded" type="boolean" value="false" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/networkManager.brs" />
+    <script type="text/brightscript" uri="FavoritesScreen.brs" />
+
+    <children>
+        <Rectangle width="1920" height="1000" color="#0D0D1A" />
+
+        <!-- Header -->
+        <Group translation="[60, 20]">
+            <Label text="My Teams" font="font:LargeBoldSystemFont" color="#FFFFFF" />
+            <Label text="Follow your favorite teams to get personalized content"
+                   translation="[0, 45]" font="font:SmallSystemFont" color="#888899"
+                   width="800" />
+        </Group>
+
+        <!-- Followed teams (horizontal row) -->
+        <Group id="followedSection" translation="[60, 110]">
+            <Label text="Following" font="font:MediumBoldSystemFont" color="#FFFFFF" />
+            <RowList id="followedTeamsList" translation="[0, 40]"
+                     itemComponentName="TeamCard"
+                     numRows="1"
+                     itemSize="[1800, 160]"
+                     rowItemSize="[[160, 160]]"
+                     rowItemSpacing="[[16, 0]]"
+                     showRowLabel="false"
+                     drawFocusFeedback="true"
+                     focusBitmapBlendColor="#E1060044" />
+        </Group>
+
+        <!-- Upcoming games for followed teams -->
+        <Group id="upcomingSection" translation="[60, 340]">
+            <Label text="Upcoming for My Teams" font="font:MediumBoldSystemFont"
+                   color="#FFFFFF" />
+            <MarkupGrid id="upcomingGrid" translation="[0, 40]"
+                        itemComponentName="GameCard"
+                        numColumns="2"
+                        numRows="3"
+                        itemSize="[880, 200]"
+                        itemSpacing="[20, 16]"
+                        drawFocusFeedback="true"
+                        focusBitmapBlendColor="#E1060044" />
+        </Group>
+
+        <!-- Add more teams prompt -->
+        <Group id="addTeamsPrompt" translation="[60, 900]">
+            <Rectangle width="400" height="50" color="#2A2A4A" cornerRadius="4" />
+            <Label text="+ Add More Teams" translation="[100, 12]"
+                   font="font:SmallBoldSystemFont" color="#FFFFFF" />
+        </Group>
+    </children>
+</component>

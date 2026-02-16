@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- NavTab: Individual navigation tab button -->
+<component name="NavTab" extends="Group">
+    <interface>
+        <field id="tabName" type="string" />
+        <field id="tabLabel" type="string" onChange="onLabelChanged" />
+        <field id="isActive" type="boolean" value="false" onChange="onStateChanged" />
+        <field id="isFocused" type="boolean" value="false" onChange="onStateChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="NavTab.brs" />
+
+    <children>
+        <Group id="tabContainer">
+            <Rectangle id="tabBg" width="160" height="76" color="#00000000" />
+            <Label id="tabText" translation="[20, 26]"
+                   font="font:SmallBoldSystemFont" color="#888899" />
+            <Rectangle id="activeIndicator" width="160" height="3"
+                       translation="[0, 73]" color="#E10600" visible="false" />
+        </Group>
+    </children>
+</component>

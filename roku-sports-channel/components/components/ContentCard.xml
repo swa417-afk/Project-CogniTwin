@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ContentCard: Individual content tile (game/event card) -->
+<component name="ContentCard" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="ContentCard.brs" />
+
+    <children>
+        <!-- Card background -->
+        <Rectangle id="cardBg" width="300" height="220" color="#1C1C3A" cornerRadius="8" />
+
+        <!-- Thumbnail -->
+        <Poster id="thumbnail" width="300" height="140"
+                loadingBitmapUri="" failedBitmapUri="" />
+        <Rectangle width="300" height="140" color="#000000" opacity="0.2" />
+
+        <!-- Live badge -->
+        <Group id="liveBadge" visible="false" translation="[10, 10]">
+            <Rectangle width="56" height="24" color="#E10600" cornerRadius="4" />
+            <Label text="LIVE" font="font:SmallestBoldSystemFont"
+                   color="#FFFFFF" translation="[10, 3]" />
+        </Group>
+
+        <!-- Sport badge -->
+        <Group id="sportBadge" translation="[230, 10]">
+            <Rectangle id="sportBadgeBg" width="60" height="24"
+                       color="#1D428A" cornerRadius="4" />
+            <Label id="sportLabel" font="font:SmallestBoldSystemFont"
+                   color="#FFFFFF" translation="[8, 3]" />
+        </Group>
+
+        <!-- Card info -->
+        <Group translation="[12, 148]">
+            <Label id="cardTitle" width="276" font="font:SmallBoldSystemFont"
+                   color="#FFFFFF" maxLines="1" />
+            <Label id="cardSubtitle" translation="[0, 24]" width="276"
+                   font="font:SmallestSystemFont" color="#888899" maxLines="1" />
+            <Label id="cardTime" translation="[0, 46]" width="276"
+                   font="font:SmallestSystemFont" color="#E10600" maxLines="1" />
+        </Group>
+    </children>
+</component>

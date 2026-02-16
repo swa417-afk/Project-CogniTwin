@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- LiveGuide: FuboTV-style electronic program guide with time grid -->
+<component name="LiveGuide" extends="Group">
+    <interface>
+        <field id="selectedContent" type="assocarray" alwaysNotify="true" />
+        <field id="contentLoaded" type="boolean" value="false" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/networkManager.brs" />
+    <script type="text/brightscript" uri="LiveGuide.brs" />
+
+    <children>
+        <Rectangle width="1920" height="1000" color="#0D0D1A" />
+
+        <!-- Time header bar -->
+        <Group id="timeHeader" translation="[300, 0]">
+            <Rectangle width="1620" height="50" color="#151530" />
+            <LayoutGroup id="timeSlots" translation="[10, 0]"
+                         layoutDirection="horiz" itemSpacings="[0]">
+                <!-- Populated dynamically with 30-min time slots -->
+            </LayoutGroup>
+            <!-- Current time indicator line -->
+            <Rectangle id="nowLine" width="2" height="1000" color="#E10600"
+                       translation="[0, 0]" />
+        </Group>
+
+        <!-- Channel list (left sidebar) -->
+        <Group id="channelSidebar" translation="[0, 50]">
+            <Rectangle width="300" height="950" color="#0A0A1E" />
+            <MarkupGrid id="channelList"
+                        translation="[0, 0]"
+                        itemComponentName="ChannelLogo"
+                        numColumns="1"
+                        numRows="12"
+                        itemSize="[300, 70]"
+                        itemSpacing="[0, 2]"
+                        drawFocusFeedback="false" />
+        </Group>
+
+        <!-- Program grid -->
+        <Group id="programGrid" translation="[300, 50]">
+            <MarkupGrid id="programList"
+                        itemComponentName="ProgramCell"
+                        numColumns="6"
+                        numRows="12"
+                        itemSize="[270, 70]"
+                        itemSpacing="[0, 2]"
+                        drawFocusFeedback="true"
+                        focusBitmapBlendColor="#E1060066" />
+        </Group>
+
+        <!-- Mini player preview (bottom) -->
+        <Group id="miniPreview" translation="[0, 780]" visible="false">
+            <Rectangle width="1920" height="220" color="#000000" opacity="0.95" />
+            <Poster id="previewThumb" width="350" height="200"
+                    translation="[10, 10]" />
+            <Group translation="[380, 20]">
+                <Label id="previewTitle" font="font:MediumBoldSystemFont"
+                       color="#FFFFFF" width="800" />
+                <Label id="previewInfo" translation="[0, 35]"
+                       font="font:SmallSystemFont" color="#AAAACC" width="800" />
+                <Label id="previewTime" translation="[0, 60]"
+                       font="font:SmallSystemFont" color="#E10600" />
+                <Group translation="[0, 100]">
+                    <Rectangle width="180" height="44" color="#E10600" cornerRadius="4" />
+                    <Label text="Watch Now" translation="[30, 10]"
+                           font="font:SmallBoldSystemFont" color="#FFFFFF" />
+                </Group>
+            </Group>
+        </Group>
+
+        <!-- Category filter chips -->
+        <Group id="filterBar" translation="[60, -45]">
+            <LayoutGroup layoutDirection="horiz" itemSpacings="[12]">
+                <FilterChip id="filter_all" chipLabel="All Sports" isSelected="true" />
+                <FilterChip id="filter_nfl" chipLabel="Football" />
+                <FilterChip id="filter_nba" chipLabel="Basketball" />
+                <FilterChip id="filter_soccer" chipLabel="Soccer" />
+                <FilterChip id="filter_mlb" chipLabel="Baseball" />
+                <FilterChip id="filter_nhl" chipLabel="Hockey" />
+                <FilterChip id="filter_more" chipLabel="More" />
+            </LayoutGroup>
+        </Group>
+    </children>
+</component>

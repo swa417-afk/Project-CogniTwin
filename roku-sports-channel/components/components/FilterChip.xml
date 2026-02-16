@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- FilterChip: Selectable filter pill/chip -->
+<component name="FilterChip" extends="Group">
+    <interface>
+        <field id="chipLabel" type="string" onChange="onLabelChanged" />
+        <field id="isSelected" type="boolean" value="false" onChange="onStateChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="FilterChip.brs" />
+
+    <children>
+        <Rectangle id="chipBg" height="36" color="#2A2A4A" cornerRadius="18" />
+        <Label id="chipText" translation="[16, 7]"
+               font="font:SmallBoldSystemFont" color="#FFFFFF" />
+    </children>
+</component>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- GameCenter: NBA League Pass-style scores, schedules, and game detail -->
+<component name="GameCenter" extends="Group">
+    <interface>
+        <field id="selectedContent" type="assocarray" alwaysNotify="true" />
+        <field id="contentLoaded" type="boolean" value="false" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/networkManager.brs" />
+    <script type="text/brightscript" uri="GameCenter.brs" />
+
+    <children>
+        <Rectangle width="1920" height="1000" color="#0D0D1A" />
+
+        <!-- Date selector bar -->
+        <Group id="dateBar" translation="[0, 0]">
+            <Rectangle width="1920" height="60" color="#151530" />
+            <LayoutGroup id="dateSelector" translation="[400, 0]"
+                         layoutDirection="horiz" horizAlignment="center"
+                         itemSpacings="[0]">
+                <!-- Populated with date tabs -->
+            </LayoutGroup>
+        </Group>
+
+        <!-- Sport filter tabs -->
+        <Group id="sportFilter" translation="[60, 70]">
+            <LayoutGroup layoutDirection="horiz" itemSpacings="[12]">
+                <FilterChip id="gc_filter_all" chipLabel="All" isSelected="true" />
+                <FilterChip id="gc_filter_nfl" chipLabel="NFL" />
+                <FilterChip id="gc_filter_nba" chipLabel="NBA" />
+                <FilterChip id="gc_filter_mlb" chipLabel="MLB" />
+                <FilterChip id="gc_filter_nhl" chipLabel="NHL" />
+                <FilterChip id="gc_filter_soccer" chipLabel="Soccer" />
+                <FilterChip id="gc_filter_ncaa" chipLabel="NCAAF" />
+            </LayoutGroup>
+        </Group>
+
+        <!-- Scoreboard ticker (horizontal scroll of live scores) -->
+        <Group id="scoreTicker" translation="[0, 120]">
+            <Rectangle width="1920" height="110" color="#0F0F28" />
+            <RowList id="scoreTickerList"
+                     translation="[20, 5]"
+                     itemComponentName="ScoreCard"
+                     numRows="1"
+                     itemSize="[1880, 100]"
+                     rowItemSize="[[240, 100]]"
+                     rowItemSpacing="[[12, 0]]"
+                     showRowLabel="false"
+                     drawFocusFeedback="true"
+                     focusBitmapBlendColor="#E1060044" />
+        </Group>
+
+        <!-- Game list (detailed cards) -->
+        <Group id="gameListContainer" translation="[60, 245]">
+            <Label id="sectionLabel" text="Today's Games"
+                   font="font:MediumBoldSystemFont" color="#FFFFFF" />
+
+            <MarkupGrid id="gameGrid" translation="[0, 45]"
+                        itemComponentName="GameCard"
+                        numColumns="2"
+                        numRows="4"
+                        itemSize="[880, 200]"
+                        itemSpacing="[20, 16]"
+                        drawFocusFeedback="true"
+                        focusBitmapBlendColor="#E1060044" />
+        </Group>
+
+        <!-- Game Detail Panel (slides in from right) -->
+        <Group id="gameDetailPanel" visible="false" translation="[1920, 0]">
+            <Rectangle width="700" height="1000" color="#151530" />
+            <Group translation="[30, 20]">
+                <!-- Matchup header -->
+                <Group id="matchupHeader">
+                    <Label id="detailLeague" font="font:SmallBoldSystemFont"
+                           color="#E10600" />
+                    <Group translation="[0, 30]">
+                        <Group id="awayTeamGroup">
+                            <Poster id="awayLogo" width="60" height="60" />
+                            <Label id="awayName" translation="[70, 5]"
+                                   font="font:MediumBoldSystemFont" color="#FFFFFF"
+                                   width="200" />
+                            <Label id="awayRecord" translation="[70, 35]"
+                                   font="font:SmallestSystemFont" color="#888899" />
+                            <Label id="awayScore" translation="[500, 5]"
+                                   font="font:LargeBoldSystemFont" color="#FFFFFF" />
+                        </Group>
+                        <Group id="homeTeamGroup" translation="[0, 80]">
+                            <Poster id="homeLogo" width="60" height="60" />
+                            <Label id="homeName" translation="[70, 5]"
+                                   font="font:MediumBoldSystemFont" color="#FFFFFF"
+                                   width="200" />
+                            <Label id="homeRecord" translation="[70, 35]"
+                                   font="font:SmallestSystemFont" color="#888899" />
+                            <Label id="homeScore" translation="[500, 5]"
+                                   font="font:LargeBoldSystemFont" color="#FFFFFF" />
+                        </Group>
+                    </Group>
+                </Group>
+
+                <!-- Game status -->
+                <Group translation="[0, 220]">
+                    <Label id="gameStatus" font="font:SmallBoldSystemFont"
+                           color="#E10600" />
+                    <Label id="gameVenue" translation="[0, 25]"
+                           font="font:SmallestSystemFont" color="#888899"
+                           width="640" />
+                    <Label id="gameBroadcast" translation="[0, 48]"
+                           font="font:SmallestSystemFont" color="#AAAACC" />
+                </Group>
+
+                <!-- Action buttons -->
+                <Group translation="[0, 310]">
+                    <Group id="watchBtn">
+                        <Rectangle width="250" height="50" color="#E10600"
+                                   cornerRadius="4" />
+                        <Label text="Watch Live" translation="[60, 12]"
+                               font="font:SmallBoldSystemFont" color="#FFFFFF" />
+                    </Group>
+                    <Group id="condensedBtn" translation="[270, 0]">
+                        <Rectangle width="250" height="50" color="#2A2A4A"
+                                   cornerRadius="4" />
+                        <Label text="Condensed Game" translation="[35, 12]"
+                               font="font:SmallBoldSystemFont" color="#FFFFFF" />
+                    </Group>
+                </Group>
+
+                <!-- Box score / Stats -->
+                <Group translation="[0, 390]">
+                    <Label text="Box Score" font="font:MediumBoldSystemFont"
+                           color="#FFFFFF" />
+                    <Rectangle translation="[0, 40]" width="640" height="1"
+                               color="#2A2A4A" />
+                    <Group id="boxScoreContainer" translation="[0, 50]">
+                        <!-- Populated dynamically -->
+                    </Group>
+                </Group>
+            </Group>
+        </Group>
+    </children>
+</component>

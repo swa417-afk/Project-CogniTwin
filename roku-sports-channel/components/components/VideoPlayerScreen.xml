@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- VideoPlayerScreen: Full-screen video player with sports HUD overlay -->
+<component name="VideoPlayerScreen" extends="Group">
+    <interface>
+        <field id="content" type="assocarray" onChange="onContentChanged" />
+        <field id="control" type="string" onChange="onControlChanged" />
+        <field id="playbackState" type="string" alwaysNotify="true" />
+        <field id="closeRequested" type="boolean" alwaysNotify="true" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="VideoPlayerScreen.brs" />
+
+    <children>
+        <!-- Video node -->
+        <Video id="videoNode" width="1920" height="1080"
+               enableUI="false" enableTrickPlay="true" />
+
+        <!-- Sports HUD overlay (toggle with * button) -->
+        <Group id="hudOverlay" visible="false">
+            <!-- Top bar: score/game info -->
+            <Rectangle width="1920" height="80" color="#000000" opacity="0.75" />
+            <Group translation="[30, 10]">
+                <Label id="hudLeague" font="font:SmallBoldSystemFont"
+                       color="#E10600" />
+                <Group translation="[0, 22]">
+                    <Label id="hudMatchup" font="font:MediumBoldSystemFont"
+                           color="#FFFFFF" width="600" />
+                    <Label id="hudScore" translation="[620, 0]"
+                           font="font:MediumBoldSystemFont" color="#FFFFFF" />
+                    <Label id="hudPeriod" translation="[800, 0]"
+                           font="font:SmallBoldSystemFont" color="#E10600" />
+                </Group>
+            </Group>
+
+            <!-- Live badge -->
+            <Group id="hudLiveBadge" translation="[1800, 15]">
+                <Rectangle width="60" height="28" color="#E10600" cornerRadius="4" />
+                <Label text="LIVE" translation="[12, 4]"
+                       font="font:SmallBoldSystemFont" color="#FFFFFF" />
+            </Group>
+        </Group>
+
+        <!-- Bottom controls overlay -->
+        <Group id="controlsOverlay" visible="false">
+            <Rectangle width="1920" height="120" translation="[0, 960]"
+                       color="#000000" opacity="0.8" />
+
+            <!-- Progress bar -->
+            <Group translation="[40, 968]">
+                <Rectangle id="progressBg" width="1840" height="4" color="#444466" />
+                <Rectangle id="progressFill" width="0" height="4" color="#E10600" />
+                <Rectangle id="progressKnob" width="14" height="14"
+                           color="#FFFFFF" cornerRadius="7"
+                           translation="[0, -5]" />
+            </Group>
+
+            <!-- Time labels -->
+            <Group translation="[40, 985]">
+                <Label id="currentTime" text="0:00" font="font:SmallestSystemFont"
+                       color="#FFFFFF" />
+                <Label id="totalTime" text="0:00" font="font:SmallestSystemFont"
+                       color="#888899" translation="[1780, 0]" horizAlign="right"
+                       width="60" />
+            </Group>
+
+            <!-- Playback controls -->
+            <Group translation="[860, 1010]">
+                <Label id="btnRewind" text="<< 10s" font="font:SmallBoldSystemFont"
+                       color="#888899" translation="[-120, 0]" />
+                <Label id="btnPlayPause" text="||" font="font:LargeBoldSystemFont"
+                       color="#FFFFFF" />
+                <Label id="btnForward" text="10s >>" font="font:SmallBoldSystemFont"
+                       color="#888899" translation="[60, 0]" />
+            </Group>
+
+            <!-- Quality indicator -->
+            <Group translation="[1780, 1010]">
+                <Label id="qualityLabel" text="HD" font="font:SmallestBoldSystemFont"
+                       color="#888899" />
+            </Group>
+        </Group>
+
+        <!-- Buffering spinner -->
+        <Group id="bufferingOverlay" visible="false">
+            <Rectangle width="1920" height="1080" color="#000000" opacity="0.5" />
+            <BusySpinner translation="[920, 500]" />
+        </Group>
+    </children>
+</component>

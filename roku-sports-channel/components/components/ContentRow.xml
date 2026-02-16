@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ContentRow: Horizontal scrolling row of content cards (like FuboTV/Netflix rows) -->
+<component name="ContentRow" extends="Group">
+    <interface>
+        <field id="rowTitle" type="string" onChange="onTitleChanged" />
+        <field id="rowIcon" type="string" />
+        <field id="sportFilter" type="string" value="" />
+        <field id="contentList" type="array" onChange="onContentChanged" />
+        <field id="itemSelected" type="assocarray" alwaysNotify="true" />
+        <field id="contentLoaded" type="boolean" value="false" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/networkManager.brs" />
+    <script type="text/brightscript" uri="ContentRow.brs" />
+
+    <children>
+        <!-- Row header -->
+        <Group id="rowHeader" translation="[60, 0]">
+            <Label id="titleLabel" font="font:MediumBoldSystemFont"
+                   color="#FFFFFF" />
+            <Label id="seeAllLabel" text="See All >"
+                   font="font:SmallSystemFont" color="#888899"
+                   translation="[0, 5]" />
+        </Group>
+
+        <!-- Horizontal row list -->
+        <RowList id="rowList" translation="[60, 50]"
+                 itemComponentName="ContentCard"
+                 numRows="1"
+                 itemSize="[1800, 220]"
+                 rowItemSize="[[300, 220]]"
+                 rowItemSpacing="[[20, 0]]"
+                 showRowLabel="false"
+                 focusBitmapBlendColor="#E1060088"
+                 drawFocusFeedback="true"
+                 vertFocusAnimationStyle="fixedFocusWrap"
+                 />
+    </children>
+</component>

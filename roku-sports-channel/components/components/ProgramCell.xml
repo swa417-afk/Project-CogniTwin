@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ProgramCell: Individual program block in EPG grid -->
+<component name="ProgramCell" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="ProgramCell.brs" />
+
+    <children>
+        <Rectangle id="cellBg" width="270" height="70" color="#1C1C3A" cornerRadius="2" />
+        <Group translation="[8, 6]">
+            <Label id="programTitle" font="font:SmallBoldSystemFont"
+                   color="#FFFFFF" width="250" maxLines="1" />
+            <Label id="programTime" translation="[0, 24]"
+                   font="font:SmallestSystemFont" color="#888899"
+                   width="200" maxLines="1" />
+            <Label id="liveTag" translation="[200, 24]"
+                   font="font:SmallestBoldSystemFont" color="#E10600"
+                   text="" />
+        </Group>
+    </children>
+</component>

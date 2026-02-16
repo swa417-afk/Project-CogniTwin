@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SearchScreen: Search for teams, leagues, games -->
+<component name="SearchScreen" extends="Group">
+    <interface>
+        <field id="selectedContent" type="assocarray" alwaysNotify="true" />
+        <field id="contentLoaded" type="boolean" value="false" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/networkManager.brs" />
+    <script type="text/brightscript" uri="SearchScreen.brs" />
+
+    <children>
+        <Rectangle width="1920" height="1000" color="#0D0D1A" />
+
+        <!-- Search input area -->
+        <Group translation="[60, 20]">
+            <Rectangle width="800" height="60" color="#1C1C3A" cornerRadius="8" />
+            <Label id="searchIcon" text="Search" translation="[20, 16]"
+                   font="font:SmallSystemFont" color="#888899" />
+            <Keyboard id="searchKeyboard" translation="[0, 90]"
+                      keyColor="#1C1C3A" focusedKeyColor="#E10600"
+                      keyboardBitmapUri="" textEditBox="true" />
+        </Group>
+
+        <!-- Quick category buttons -->
+        <Group translation="[60, 400]">
+            <Label text="Browse by Sport" font="font:MediumBoldSystemFont"
+                   color="#FFFFFF" />
+            <LayoutGroup translation="[0, 40]" layoutDirection="horiz"
+                         itemSpacings="[16]">
+                <SportBadge id="badge_nfl" sportName="NFL" sportColor="#013369" />
+                <SportBadge id="badge_nba" sportName="NBA" sportColor="#1D428A" />
+                <SportBadge id="badge_mlb" sportName="MLB" sportColor="#002D72" />
+                <SportBadge id="badge_nhl" sportName="NHL" sportColor="#000000" />
+                <SportBadge id="badge_soccer" sportName="Soccer" sportColor="#2E7D32" />
+                <SportBadge id="badge_ufc" sportName="UFC" sportColor="#D20A0A" />
+                <SportBadge id="badge_ncaa" sportName="NCAAF" sportColor="#FF6F00" />
+            </LayoutGroup>
+        </Group>
+
+        <!-- Search results -->
+        <Group id="resultsContainer" translation="[60, 560]">
+            <Label id="resultsLabel" text="" font="font:MediumBoldSystemFont"
+                   color="#FFFFFF" />
+            <MarkupGrid id="resultsGrid" translation="[0, 40]"
+                        itemComponentName="ContentCard"
+                        numColumns="5"
+                        numRows="3"
+                        itemSize="[340, 240]"
+                        itemSpacing="[20, 16]"
+                        drawFocusFeedback="true"
+                        focusBitmapBlendColor="#E1060044" />
+        </Group>
+
+        <!-- Right panel: trending searches -->
+        <Group translation="[920, 20]">
+            <Label text="Trending" font="font:MediumBoldSystemFont"
+                   color="#FFFFFF" />
+            <LayoutGroup id="trendingList" translation="[0, 40]"
+                         layoutDirection="vert" itemSpacings="[8]">
+                <!-- Populated dynamically -->
+            </LayoutGroup>
+        </Group>
+    </children>
+</component>

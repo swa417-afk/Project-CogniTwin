@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- HomeScreen: FuboTV-style home with hero banner + content rows -->
+<component name="HomeScreen" extends="Group">
+    <interface>
+        <field id="selectedContent" type="assocarray" alwaysNotify="true" />
+        <field id="contentLoaded" type="boolean" value="false" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="pkg:/source/networkManager.brs" />
+    <script type="text/brightscript" uri="HomeScreen.brs" />
+
+    <children>
+        <!-- Full screen scrollable container -->
+        <LayoutGroup id="mainLayout" translation="[0, 0]"
+                     layoutDirection="vert" itemSpacings="[0]">
+
+            <!-- Hero Banner - Featured live event -->
+            <Group id="heroBanner">
+                <Rectangle id="heroBg" width="1920" height="500" color="#1a1a2e" />
+                <Poster id="heroImage" width="1920" height="500"
+                        loadingBitmapUri="" failedBitmapUri="" />
+                <!-- Gradient overlay -->
+                <Rectangle width="1920" height="200" translation="[0, 300]"
+                           color="#0D0D1A" opacity="0.9" />
+                <!-- Hero text -->
+                <Group translation="[80, 300]">
+                    <Rectangle width="8" height="60" color="#E10600" />
+                    <Group translation="[24, 0]">
+                        <Label id="heroLive" text="LIVE NOW"
+                               font="font:SmallBoldSystemFont" color="#E10600" />
+                        <Label id="heroTitle" translation="[0, 22]"
+                               font="font:LargeBoldSystemFont" color="#FFFFFF"
+                               width="800" />
+                        <Label id="heroSubtitle" translation="[0, 60]"
+                               font="font:SmallSystemFont" color="#AAAACC"
+                               width="800" />
+                    </Group>
+                </Group>
+                <!-- Watch Now button -->
+                <Group id="heroButton" translation="[80, 420]">
+                    <Rectangle id="heroBtnBg" width="220" height="50"
+                               color="#E10600" cornerRadius="4" />
+                    <Label text="Watch Now" translation="[50, 12]"
+                           font="font:SmallBoldSystemFont" color="#FFFFFF" />
+                </Group>
+            </Group>
+
+            <!-- Content Rows -->
+            <Group id="rowContainer" translation="[0, 20]">
+                <!-- Row: Live Now -->
+                <ContentRow id="row_liveNow" translation="[0, 0]"
+                            rowTitle="Live Now" rowIcon="live" />
+
+                <!-- Row: Trending -->
+                <ContentRow id="row_trending" translation="[0, 290]"
+                            rowTitle="Trending Games" rowIcon="fire" />
+
+                <!-- Row: NFL -->
+                <ContentRow id="row_nfl" translation="[0, 580]"
+                            rowTitle="Football" rowIcon="sport"
+                            sportFilter="nfl" />
+
+                <!-- Row: NBA -->
+                <ContentRow id="row_nba" translation="[0, 870]"
+                            rowTitle="Basketball" rowIcon="sport"
+                            sportFilter="nba" />
+
+                <!-- Row: Soccer -->
+                <ContentRow id="row_soccer" translation="[0, 1160]"
+                            rowTitle="Soccer" rowIcon="sport"
+                            sportFilter="soccer" />
+
+                <!-- Row: MLB -->
+                <ContentRow id="row_mlb" translation="[0, 1450]"
+                            rowTitle="Baseball" rowIcon="sport"
+                            sportFilter="mlb" />
+
+                <!-- Row: NHL -->
+                <ContentRow id="row_nhl" translation="[0, 1740]"
+                            rowTitle="Hockey" rowIcon="sport"
+                            sportFilter="nhl" />
+
+                <!-- Row: Combat Sports -->
+                <ContentRow id="row_combat" translation="[0, 2030]"
+                            rowTitle="UFC & Boxing" rowIcon="sport"
+                            sportFilter="combat" />
+
+                <!-- Row: Motorsports -->
+                <ContentRow id="row_motor" translation="[0, 2320]"
+                            rowTitle="Motorsports" rowIcon="sport"
+                            sportFilter="motorsport" />
+
+                <!-- Row: Recently Watched -->
+                <ContentRow id="row_recent" translation="[0, 2610]"
+                            rowTitle="Continue Watching" rowIcon="recent" />
+            </Group>
+        </LayoutGroup>
+    </children>
+</component>

@@ -1,7 +1,7 @@
-# SportZone - Free Sports Streaming Channel
-# Roku Channel Manifest
+# Game Time - Live Sports Streaming Channel for Roku
+# FuboTV / NBA League Pass inspired interface
 
-title=SportZone
+title=Game Time
 subtitle=Live Sports Streaming
 major_version=1
 minor_version=0
@@ -17,7 +17,7 @@ mm_icon_side_sd=pkg:/images/icon_side_sd.png
 splash_screen_fhd=pkg:/images/splash_fhd.png
 splash_screen_hd=pkg:/images/splash_hd.png
 splash_screen_sd=pkg:/images/splash_sd.png
-splash_color=#1a1a2e
+splash_color=#0D0D1A
 splash_min_time=1500
 
 ui_resolutions=fhd

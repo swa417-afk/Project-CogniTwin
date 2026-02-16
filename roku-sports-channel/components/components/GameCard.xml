@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- GameCard: Detailed game card for GameCenter grid -->
+<component name="GameCard" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="onContentChanged" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/source/utils.brs" />
+    <script type="text/brightscript" uri="GameCard.brs" />
+
+    <children>
+        <Rectangle id="gameBg" width="880" height="200" color="#1C1C3A" cornerRadius="8" />
+
+        <!-- Left accent bar -->
+        <Rectangle id="accentBar" width="4" height="200" color="#E10600" />
+
+        <!-- League label -->
+        <Label id="leagueLabel" translation="[20, 12]"
+               font="font:SmallestBoldSystemFont" color="#E10600" />
+
+        <!-- Away team row -->
+        <Group translation="[20, 40]">
+            <Poster id="awayTeamLogo" width="40" height="40" />
+            <Label id="awayTeamName" translation="[50, 8]"
+                   font="font:SmallBoldSystemFont" color="#FFFFFF" width="400" />
+            <Label id="awayTeamRecord" translation="[50, 28]"
+                   font="font:SmallestSystemFont" color="#888899" />
+            <Label id="awayTeamScore" translation="[700, 0]"
+                   font="font:LargeBoldSystemFont" color="#FFFFFF"
+                   horizAlign="right" width="80" />
+        </Group>
+
+        <!-- Home team row -->
+        <Group translation="[20, 100]">
+            <Poster id="homeTeamLogo" width="40" height="40" />
+            <Label id="homeTeamName" translation="[50, 8]"
+                   font="font:SmallBoldSystemFont" color="#FFFFFF" width="400" />
+            <Label id="homeTeamRecord" translation="[50, 28]"
+                   font="font:SmallestSystemFont" color="#888899" />
+            <Label id="homeTeamScore" translation="[700, 0]"
+                   font="font:LargeBoldSystemFont" color="#FFFFFF"
+                   horizAlign="right" width="80" />
+        </Group>
+
+        <!-- Game info footer -->
+        <Group translation="[20, 160]">
+            <Label id="gameTimeLabel" font="font:SmallBoldSystemFont" color="#E10600" />
+            <Label id="broadcastLabel" translation="[200, 0]"
+                   font="font:SmallestSystemFont" color="#888899" width="400" />
+        </Group>
+
+        <!-- Watch button (visible on focus) -->
+        <Group id="watchOverlay" translation="[750, 155]" visible="false">
+            <Rectangle width="110" height="36" color="#E10600" cornerRadius="4" />
+            <Label text="Watch" translation="[28, 7]"
+                   font="font:SmallBoldSystemFont" color="#FFFFFF" />
+        </Group>
+    </children>
+</component>
